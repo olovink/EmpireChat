@@ -1,0 +1,4 @@
+name: EmpireChat
+version: '${project.version}'
+main: com.tes.empirechat.Loader
+api-version: 1.19
