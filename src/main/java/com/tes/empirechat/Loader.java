@@ -3,7 +3,6 @@ package com.tes.empirechat;
 import com.tes.empirechat.handler.PlayerHandler;
 import com.tes.empirechat.utils.Utils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class Loader extends JavaPlugin {
@@ -16,6 +15,10 @@ public final class Loader extends JavaPlugin {
         getLogger().info("Initialization...");
         registerEvents();
         loadConfig();
+        if (Bukkit.getPluginManager().getPlugin("PlaceholderAPI") == null) {
+            getLogger().info("PlaceholderAPI not found. Shutdown.");
+            Bukkit.getPluginManager().disablePlugin(this);
+        }
     }
 
     public static Loader getInstance() {
@@ -41,6 +44,5 @@ public final class Loader extends JavaPlugin {
 
     public void loadConfig() {
         this.saveDefaultConfig();
-        this.saveResource("config.yml", true);
     }
 }

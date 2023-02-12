@@ -2,6 +2,7 @@ package com.tes.empirechat.handler;
 
 import com.tes.empirechat.Loader;
 import com.tes.empirechat.utils.Utils;
+import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -55,7 +56,12 @@ public class PlayerHandler implements Listener {
 
         String localFormat = Loader.getColoredString("local-chat-format");
         String globalFormat = Loader.getColoredString("global-chat-format");
-        String reallyMessage = String.format(Utils.getFormat(), player.getDisplayName(), message);
+        String reallyMessage = Loader.getColoredString("player-format");
+        reallyMessage = reallyMessage.replace("%player%", player.getDisplayName());
+        reallyMessage = reallyMessage.replace("%message%", message);
+        reallyMessage = PlaceholderAPI.setPlaceholders(player, reallyMessage);
+        reallyMessage = Utils.hex(reallyMessage);
+
         int distance = Loader.getConfigInteger("chat-distance");
 
         for (Player players : Loader.getInstance().getServer().getOnlinePlayers()) {
