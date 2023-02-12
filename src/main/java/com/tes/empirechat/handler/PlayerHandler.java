@@ -56,7 +56,7 @@ public class PlayerHandler implements Listener {
         String localFormat = Loader.getColoredString("local-chat-format");
         String globalFormat = Loader.getColoredString("global-chat-format");
         String reallyMessage = String.format(Utils.getFormat(), player.getDisplayName(), message);
-        int distance = Loader.getColoredInteger("chat-distance");
+        int distance = Loader.getConfigInteger("chat-distance");
 
         for (Player players : Loader.getInstance().getServer().getOnlinePlayers()) {
             if (Objects.equals(type, "global")) {

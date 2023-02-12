@@ -17,11 +17,19 @@ public class Utils {
         return format;
     }
 
-    public static String firstNChars(String str, int n) {
-        if (str == null) {
+    public static String firstNChars(String string, int count) {
+        if (string == null) {
             return null;
         }
 
-        return str.length() < n ? str : str.substring(0, n);
+        return string.length() < count ? string : string.substring(0, count);
+    }
+
+    public static String colorString(String string) {
+
+        if (string == null)
+            return null;
+
+        return ChatColor.translateAlternateColorCodes('&', string);
     }
 }

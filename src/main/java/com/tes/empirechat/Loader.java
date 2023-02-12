@@ -1,6 +1,7 @@
 package com.tes.empirechat;
 
 import com.tes.empirechat.handler.PlayerHandler;
+import com.tes.empirechat.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -26,23 +27,11 @@ public final class Loader extends JavaPlugin {
     }
 
     public static String getColoredString(String path) {
-        return colorString(Loader.instance.getConfig().getString(path));
+        return Utils.colorString(Loader.instance.getConfig().getString(path));
     }
 
-    public static String getColoredBoolean(String path) {
-        return colorString(String.valueOf(Loader.instance.getConfig().getBoolean(path)));
-    }
-
-    public static int getColoredInteger(String path) {
+    public static int getConfigInteger(String path) {
         return Loader.instance.getConfig().getInt(path);
-    }
-
-    public static String colorString(String string) {
-
-        if (string == null)
-            return null;
-
-        return ChatColor.translateAlternateColorCodes('&', string);
     }
 
     @Override
